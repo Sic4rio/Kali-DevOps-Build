@@ -1,0 +1,59 @@
+---
+- name: Install Additional Tools on Kali Linux
+  hosts: localhost
+  become: yes
+
+  tasks:
+    - name: Install required system packages
+      apt:
+        name:
+          - seclists
+          - curl
+          - dnsrecon
+          - enum4linux
+          - feroxbuster
+          - gobuster
+          - impacket-scripts
+          - nbtscan
+          - onesixtyone
+          - oscanner
+          - redis-tools
+          - smbclient
+          - smbmap
+          - snmp
+          - sslscan
+          - sipvicious
+          - tnscmd10g
+          - whatweb
+          - wkhtmltopdf
+          - gedit 
+          - remmina 
+          - stacer
+          - terminator 
+          - pipx
+          - kali-wallpapers-all
+          - neofetch
+          - proxychains
+          - sshuttle
+          - dnsmap
+          - uniscan
+          - dnswalk
+          - xssere
+          - rlwrap
+
+
+        state: present
+
+    - name: Install AutoRecon using pip
+      pip:
+        name: git+https://github.com/Tib3rius/AutoRecon.git
+
+    - name: Install Arsenal using pip
+      pip:
+        name: arsenal-cli
+
+    - name: Install impacket using pipx
+      command: python3 -m pipx install impacket
+      
+
+    # Note: Manual steps required for installing burp pro and GNOME.
